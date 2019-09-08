@@ -21,8 +21,8 @@ from pathlib import Path
 from argparse import ArgumentParser
 
 parser = ArgumentParser()
-parser.add_argument("-i", "--datapath", dest="inputfilename",
-                    help="write report to FILE", metavar="FILE")
+parser.add_argument("-i", "--datapath", dest="inputdatapath",
+                    help="Enter the path of the dataset report to FILE", metavar="FILE")
 parser.add_argument("-o", "--outputfile", dest="outputfilename",
                     help="write report to FILE", metavar="FILE")
 
@@ -32,12 +32,12 @@ parser.add_argument("-q", "--quiet",
 
 args = parser.parse_args()
 print(args)
-print(args.datapath)
+print(args.inputdatapath)
 
-datapath = str(args.datapath)
+datapath = str(args.inputdatapath)
 
 #outputfile = inputfile[:-4] + "_features" + inputfile[-4:]
-outputfile = str(args.outputfilename)
+#outputfile = str(args.outputfilename)
 
 
 
