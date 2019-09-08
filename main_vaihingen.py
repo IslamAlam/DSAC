@@ -36,7 +36,7 @@ parser.add_argument("-q", "--quiet",
 args = parser.parse_args()
 print(args)
 print(args.inputdatapath)
-data_path = BASE_DIR.joinpath(str(args.inputdatapath))
+data_path = str(BASE_DIR.joinpath(str(args.inputdatapath)) + "/")
 
 #outputfile = inputfile[:-4] + "_features" + inputfile[-4:]
 #outputfile = str(args.outputfilename)
@@ -84,7 +84,7 @@ numfilt = [32,64,128,128,256,256]
 im_size = 512
 out_size = 256
 # data_path = '/mnt/bighd/Data/Vaihingen/buildings/'
-csvfile=open(data_path+'polygons.csv', newline='')
+csvfile=open(data_path + 'polygons.csv', newline='')
 reader = csv.reader(csvfile)
 images = np.zeros([im_size,im_size,3,168])
 masks = np.zeros([out_size,out_size,1,168])
