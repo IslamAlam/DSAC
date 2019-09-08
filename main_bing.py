@@ -80,6 +80,8 @@ else:
     data_path = str(BASE_DIR.joinpath(str(args.inputdatapath))) + '/test/'
     # data_path = '/mnt/bighd/Data/BingJohn/buildings_osm/single_buildings/test/'
 
+data_path = str(BASE_DIR.joinpath(str(args.inputdatapath))) + '/'
+
 csvfile=open(data_path+'building_coords.csv', newline='')
 reader = csv.reader(csvfile)
 images = np.zeros([im_size,im_size,3,num_ims])
