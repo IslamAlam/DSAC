@@ -11,9 +11,33 @@ import scipy
 import time
 import matplotlib.pyplot as plt
 
+
+from pathlib import Path
+
+BASE_DIR = Path().resolve()
+
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument("-i", "--datapath", dest="inputdatapath",
+                    help="Enter the path of the dataset report to FILE", metavar="FILE")
+parser.add_argument("-o", "--outputfile", dest="outputfilename",
+                    help="write report to FILE", metavar="FILE")
+
+parser.add_argument("-q", "--quiet",
+                    action="store_false", dest="verbose", default=True,
+                    help="don't print status messages to stdout")
+
+args = parser.parse_args()
+print(args)
+print(args.inputdatapath)
+
+
+
 model_path = 'models/bing/'
 do_plot = False
 do_train = True
+
 
 
 def snake_process (mapE, mapA, mapB, mapK, init_snake):
@@ -50,9 +74,11 @@ batch_size = 1
 im_size = 80
 out_size = 80
 if do_train:
-    data_path = '/mnt/bighd/Data/BingJohn/buildings_osm/single_buildings/train/'
+    data_path = str(BASE_DIR.joinpath(str(args.inputdatapath)))  + '/train/'
+    # data_path = '/mnt/bighd/Data/BingJohn/buildings_osm/single_buildings/train/'
 else:
-    data_path = '/mnt/bighd/Data/BingJohn/buildings_osm/single_buildings/test/'
+    data_path = str(BASE_DIR.joinpath(str(args.inputdatapath))) + '/test/'
+    # data_path = '/mnt/bighd/Data/BingJohn/buildings_osm/single_buildings/test/'
 
 csvfile=open(data_path+'building_coords.csv', newline='')
 reader = csv.reader(csvfile)
