@@ -16,6 +16,31 @@ from tensorflow.python.client import timeline
 
 import matplotlib.pyplot as plt
 
+
+from pathlib import Path
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument("-i", "--datapath", dest="inputfilename",
+                    help="write report to FILE", metavar="FILE")
+parser.add_argument("-o", "--outputfile", dest="outputfilename",
+                    help="write report to FILE", metavar="FILE")
+
+parser.add_argument("-q", "--quiet",
+                    action="store_false", dest="verbose", default=True,
+                    help="don't print status messages to stdout")
+
+args = parser.parse_args()
+print(args)
+print(args.datapath)
+
+datapath = str(args.datapath)
+
+#outputfile = inputfile[:-4] + "_features" + inputfile[-4:]
+outputfile = str(args.outputfilename)
+
+
+
 model_path = 'models/vaihingen/'
 do_plot = False
 do_train = True
@@ -56,7 +81,7 @@ batch_size = 1
 numfilt = [32,64,128,128,256,256]
 im_size = 512
 out_size = 256
-data_path = '/mnt/bighd/Data/Vaihingen/buildings/'
+# data_path = '/mnt/bighd/Data/Vaihingen/buildings/'
 csvfile=open(data_path+'polygons.csv', newline='')
 reader = csv.reader(csvfile)
 images = np.zeros([im_size,im_size,3,168])
