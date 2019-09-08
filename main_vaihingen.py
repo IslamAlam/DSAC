@@ -18,6 +18,9 @@ import matplotlib.pyplot as plt
 
 
 from pathlib import Path
+
+BASE_DIR = Path().resolve()
+
 from argparse import ArgumentParser
 
 parser = ArgumentParser()
@@ -33,8 +36,7 @@ parser.add_argument("-q", "--quiet",
 args = parser.parse_args()
 print(args)
 print(args.inputdatapath)
-
-data_path = str(args.inputdatapath)
+data_path = str(BASE_DIR.joinpath(str(args.inputdatapath)))
 
 #outputfile = inputfile[:-4] + "_features" + inputfile[-4:]
 #outputfile = str(args.outputfilename)
