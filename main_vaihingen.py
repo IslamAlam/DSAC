@@ -34,7 +34,7 @@ args = parser.parse_args()
 print(args)
 print(args.inputdatapath)
 
-datapath = str(args.inputdatapath)
+data_path = str(args.inputdatapath)
 
 #outputfile = inputfile[:-4] + "_features" + inputfile[-4:]
 #outputfile = str(args.outputfilename)
