@@ -143,7 +143,7 @@ def polygon_area(u,v):
 def plot_snakes(snake,snake_hist,GT,mapE, mapA, mapB, mapK, grads_arrayE, grads_arrayA, grads_arrayB, grads_arrayK, image, mask):
 
     # Plot result
-    fig0, (ax) = plt.subplots(ncols=5,nrows=1)
+    fig0, (ax) = plt.subplots(ncols=1,nrows=5)
     im = ax[0].imshow(scipy.misc.imresize(np.abs(image[:,:,:,0]),mapE[:, :, 0, 0].shape))
     for i in range(0,len(snake_hist),5):
         ax[0].plot(snake_hist[i][:, 1], snake_hist[i][:, 0], '-.', color=[i / len(snake_hist), i / len(snake_hist), 1-i / len(snake_hist)], lw=3)
