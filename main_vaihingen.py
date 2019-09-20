@@ -121,10 +121,10 @@ elif os.path.isdir(model_path+'results/polygons.csv'):
 
 
 # Add ops to save and restore all the variables.
-saver = tf.train.Saver()
+saver = tf.compat.v1.train.Saver()
 
 #Initialize CNN
-optimizer = tf.train.AdamOptimizer(1e-4, epsilon=1e-6)
+optimizer = tf.compat.v1.train.AdamOptimizer(1e-4, epsilon=1e-6)
 apply_gradients = optimizer.apply_gradients(zip(grads, tvars))
 
 with tf.device('/cpu:0'):
@@ -209,10 +209,10 @@ def epoch(n,i,mode):
 
 
 
-with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,log_device_placement=True)) as sess:
-    sess2 = tf.Session(config=tf.ConfigProto(allow_soft_placement=True,log_device_placement=True))
+with tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(allow_soft_placement=True,log_device_placement=True)) as sess:
+    sess2 = tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(allow_soft_placement=True,log_device_placement=True))
     save_path = tf.train.latest_checkpoint(model_path)
-    init = tf.global_variables_initializer()
+    init = tf.compat.v1.global_variables_initializer()
     sess.run(init)
     start_epoch = 0
     if save_path is not None:
