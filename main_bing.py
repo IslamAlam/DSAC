@@ -119,7 +119,7 @@ with tf.device('/gpu:0'):
     batch_size=1,wd=0.01,layers=len(numfilt),numfilt=numfilt,E_blur=2,stack_from=0)
 
 #Initialize CNN
-optimizer = tf.train.AdamOptimizer(1e-5, epsilon=1e-7)
+optimizer = tf.compat.v1.train.AdamOptimizer(1e-5, epsilon=1e-7)
 apply_gradients = optimizer.apply_gradients(zip(grads, tvars))
 
 ###########################################################################################
@@ -144,7 +144,7 @@ elif os.path.isdir(model_path+'results/polygons.csv'):
     os.remove(model_path+'results/polygons.csv')
 
 # Add ops to save and restore all the variables.
-saver = tf.train.Saver()
+saver = tf.compat.v1.train.Saver()
 
 
 ###########################################################################################
@@ -230,10 +230,10 @@ def epoch(n,i,mode):
 ###########################################################################################
 # RUN THE TRAINING
 ###########################################################################################
-with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,log_device_placement=True)) as sess:
-    sess2 = tf.Session(config=tf.ConfigProto(allow_soft_placement=True,log_device_placement=True))
+with tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(allow_soft_placement=True,log_device_placement=True)) as sess:
+    sess2 = tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(allow_soft_placement=True,log_device_placement=True))
     save_path = tf.train.latest_checkpoint(model_path)
-    init = tf.global_variables_initializer()
+    init = tf.compat.v1.global_variables_initializer()
     sess.run(init)
     if save_path is not None:
         saver.restore(sess,save_path)
