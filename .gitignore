@@ -105,3 +105,10 @@ venv.bak/
 .mypy_cache/
 
 *.zip
+
+/models
+/dataset/instance/*.png
+/dataset/planet_dsac
+/dataset/planet_dsac_dataset/*.png
+/dataset
+

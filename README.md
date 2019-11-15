@@ -18,3 +18,9 @@ Please contact me at diego.marcos@wur.nl for questions and feedback.
 
 <a name="marcos2018"></a>
 [1] Marcos, D., Tuia, D., Kellenberger, B., Zhang, L., Bai, M., Liao, R. & Urtasun, R. (2018). Learning deep structured active contours end-to-end. arXiv preprint arXiv:1803.06329.
+
+
+
+https://github.com/siddigss/Active-Contours.git
+
+https://github.com/siddigss/S_cubed/tree/master/Image%20Processing/Active%20Contours
